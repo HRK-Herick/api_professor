@@ -2,6 +2,7 @@ package lab.crud.api.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Produto {
 
@@ -61,6 +62,25 @@ public class Produto {
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
 				+ ", dataCriacao=" + dataCriacao + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dataCriacao, descricao, id, nome, preco);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		return Objects.equals(dataCriacao, other.dataCriacao) && Objects.equals(descricao, other.descricao)
+				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(preco, other.preco);
 	}
 	
 	
